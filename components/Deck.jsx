@@ -1,43 +1,48 @@
 import React, { useState, useMemo, useEffect } from 'react'
 import { cardCodes } from '../utils/cardList'
-import { animateShuffle } from '../animations/shuffle'
+import { animateShuffle } from '../src/animations/shuffle'
 import Card from './Card'
+
+// Secure random integer generator (0 to max-1)
+function secureRandomInt(max) {
+  const array = new Uint32Array(1)
+  window.crypto.getRandomValues(array)
+  return array[0] % max
+}
 
 export default function Deck({ onDeal, onDeckChange, groupRef }) {
   const fullDeck = useMemo(() => [...cardCodes], [])
-  const [deck, setDeck] = useState(fullDeck)
-  const [isMobile, setIsMobile] = useState(false)
 
-  useEffect(() => {
-    const checkScreen = () => {
-      setIsMobile(window.innerWidth <= 768)
+  // Use state for deck to track current cards
+  const [deck, setDeck] = useState(() => shuffleArray([...fullDeck]))
+
+  // Shuffle helper using secure random
+  function shuffleArray(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = secureRandomInt(i + 1)
+      ;[arr[i], arr[j]] = [arr[j], arr[i]]
     }
-    checkScreen()
-    window.addEventListener('resize', checkScreen)
-    return () => window.removeEventListener('resize', checkScreen)
-  }, [])
+    return arr
+  }
 
   useEffect(() => {
     onDeckChange?.(deck.length)
   }, [deck.length, onDeckChange])
 
+  // Shuffle deck with animation and update state
   const shuffleDeck = () => {
     animateShuffle(
       groupRef,
       {
-        liftAmount: 2,
-        liftTime: 0.3,
-        scatterTime: 0.5,
-        restackTime: 0.7,
+        liftAmount:    2,
+        liftTime:      0.3,
+        scatterTime:   0.5,
+        restackTime:   0.7,
         staggerAmount: 0.02,
       },
       () => {
-        const arr = [...deck]
-        for (let i = arr.length - 1; i > 0; i--) {
-          const j = Math.floor(Math.random() * (i + 1))
-          ;[arr[i], arr[j]] = [arr[j], arr[i]]
-        }
-        setDeck(arr)
+        const shuffled = shuffleArray([...deck])
+        setDeck(shuffled)
         onDeal([])
       }
     )
@@ -64,9 +69,11 @@ export default function Deck({ onDeal, onDeckChange, groupRef }) {
 
   useEffect(() => {
     const handleReset = () => {
-      setDeck(fullDeck)
+      // Always shuffle a fresh copy on reset to ensure new order
+      const freshShuffled = shuffleArray([...fullDeck])
+      setDeck(freshShuffled)
       onDeal([])
-      onDeckChange?.(fullDeck.length)
+      onDeckChange?.(freshShuffled.length)
     }
     window.addEventListener('reset-deck', handleReset)
     return () => window.removeEventListener('reset-deck', handleReset)
@@ -82,11 +89,7 @@ export default function Deck({ onDeal, onDeckChange, groupRef }) {
         <Card
           key={`${code}-${idx}`}
           code={code}
-          position={[
-            0,
-            -idx * (isMobile ? 0.01 : 0.02),
-            idx * (isMobile ? 0.0005 : 0.001)
-          ]}
+          position={[0, -idx * 0.02, idx * 0.001]}
         />
       ))}
 

@@ -1,42 +1,30 @@
-import React, { useEffect, useRef, useState } from 'react'
+
+import React, { useRef, useState } from 'react'
 import { Canvas } from '@react-three/fiber'
 import Deck from '../components/Deck'
 import Card from '../components/Card'
-import { animateDeal } from './animations/dealcards'
 import './app.css'
 
 export default function App() {
   const [dealtCards, setDealtCards] = useState([])
-  const [deckCount, setDeckCount] = useState(0)
+  const [deckCount, setDeckCount] = useState(52)
 
   const dealtRefs = useRef([])
   const deckGroupRef = useRef()
+
+  const [dealAnimation, setDealAnimation] = useState(false)  
+
   const handleDeckChange = (count) => setDeckCount(count)
+
   const handleDeal = (cards) => {
     dealtRefs.current = cards.map(() => React.createRef())
     setDealtCards(cards)
+    setDealAnimation(true)  
   }
-  
-  useEffect(() => {
-    if(!dealtRefs.current || !Array.isArray(dealtRefs.current)) return
-    if (dealtRefs.current.length === 0 || !deckGroupRef.current) return
-    
-    const tryAnimate = () => {
-      const ready = dealtRefs.current.every(ref => ref?.current)
-
-      if(ready) {
-        animateDeal(dealtRefs.current, deckGroupRef)
-      } else {
-        requestAnimationFrame(tryAnimate)
-      }
-    }
-
-    tryAnimate()
-  },[dealtCards])
 
   const requestDeal = (n) =>
     window.dispatchEvent(new CustomEvent('deal-request', { detail: n }))
-  
+
   const resetDeck = () => window.dispatchEvent(new Event('reset-deck'))
 
   return (
@@ -46,7 +34,7 @@ export default function App() {
           className="full-canvas"
           shadows
           dpr={[1, 2]}
-          camera={{ position: [0, 2, 12], fov: 50 }}
+          camera={{ position: [0, 2, 35], fov: 19 }}
         >
           <ambientLight intensity={0.6} />
           <directionalLight
@@ -57,25 +45,29 @@ export default function App() {
             shadow-mapSize-height={1024}
           />
 
-          <Deck 
+          <Deck
             onDeal={handleDeal}
             onDeckChange={handleDeckChange}
             groupRef={deckGroupRef}
+            position={[0, 0, -1.5]}
           />
 
           {dealtCards.map((code, idx) => {
             const count = dealtCards.length
-            //const xOffset = -((count - 1) / 2) + idx * 1.2
-            const rotY = (idx - (count - 1) / 2) * 0.1
-            const origin = deckGroupRef.current.position
+            const spacing = 3
+            const x = (idx - (count - 1) / 2) * spacing
+
+            const cardRef = dealtRefs.current[idx] || React.createRef()
+            dealtRefs.current[idx] = cardRef
+
             return (
               <Card
                 key={`${code}-${idx}`}
-                ref={dealtRefs.current[idx]}
+                ref={cardRef}
                 code={code}
-                dealt={true}
-                rotation={[0, rotY, 0]}
-                position={[origin.x, origin.y, origin.z]}
+                dealt={dealAnimation}  
+                position={[x, 0, 1]}   
+                delay={idx * 150}  
               />
             )
           })}
@@ -90,9 +82,7 @@ export default function App() {
               Deal {n}
             </button>
           ))}
-          <button onClick={resetDeck}>
-            Reset Deck
-          </button>
+          <button onClick={resetDeck}>Reset Deck</button>
         </div>
       </div>
     </div>

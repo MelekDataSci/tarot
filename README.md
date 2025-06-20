@@ -42,3 +42,54 @@ Coding Tasks:
 
 Questions? If you have any questions about the task, please contact:
 Juho Puurunen – juho.puurunen@metropolia.fi
+
+
+
+# Tarot Card App
+
+## Improvements to User Experience
+
+To enhance the overall user experience of the Tarot app, the following improvements can be made:
+
+### 1. Streamlined Interface:
+- Simplify the control layout and improve accessibility with larger buttons.  
+- Make sure it responds well for both desktop and mobile users.  
+
+### 2. Visual Design Improvements:
+- Let users choose different background themes, like celestial or mystical environments.  
+- Make card designs more attractive and visually engaging.  
+
+### 3. User Feedback:
+- Add ambient sound effects and background music to improve immersion.  
+- Provide clear interpretations of cards when users hover or click.  
+### 4. User Education:
+- Offer tutorials on how to use the app.  
+- Show card meanings when hovered over.
+---
+
+## Ideas for Gamifying the Tarot App
+
+If given a full week to develop, I could introduce a **game-like experience** for users:
+
+### 1. Tarot Challenges:
+- **Daily Challenges** that users can complete for rewards.
+- **Tarot Quests** with specific card spreads and themes.
+
+### 2. Scoring and Progression:
+- Introduce a **leveling system** where users earn points for reading.  
+- Award **badges** for achievements, such as completing a specific number of readings.
+
+### 3. Interactive Tarot Games:
+- **Tarot Card Guessing Game** where users guess the card that will be drawn.  
+- **Fortune Teller Battle** where users compete with friends for the most accurate readings.
+
+### 4. Customization:
+- Let users create their own custom decks.  
+- Allow users to adjust layouts for a more personalized experience.
+
+### 5. Social & Sharing:
+- Let users **share their readings** on social media.
+
+### 6. In-App Store & Currency:
+- Implement **Tarot Coins** that users earn and spend to unlock premium features.  
+- Offer **in-app purchases** for exclusive decks and readings.
