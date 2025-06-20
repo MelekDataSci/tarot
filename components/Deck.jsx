@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useEffect } from 'react'
 import { cardCodes } from '../utils/cardList'
-import { animateShuffle } from '../src/animations/shuffle'
+import { animateShuffle } from '../animations/shuffle'
 import Card from './Card'
 
 export default function Deck({ onDeal, onDeckChange, groupRef }) {
