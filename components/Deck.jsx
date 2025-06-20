@@ -6,19 +6,29 @@ import Card from './Card'
 export default function Deck({ onDeal, onDeckChange, groupRef }) {
   const fullDeck = useMemo(() => [...cardCodes], [])
   const [deck, setDeck] = useState(fullDeck)
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const checkScreen = () => {
+      setIsMobile(window.innerWidth <= 768)
+    }
+    checkScreen()
+    window.addEventListener('resize', checkScreen)
+    return () => window.removeEventListener('resize', checkScreen)
+  }, [])
 
   useEffect(() => {
     onDeckChange?.(deck.length)
   }, [deck.length, onDeckChange])
 
-   const shuffleDeck = () => {
+  const shuffleDeck = () => {
     animateShuffle(
       groupRef,
       {
-        liftAmount:    2,
-        liftTime:      0.3,
-        scatterTime:   0.5,
-        restackTime:   0.7,
+        liftAmount: 2,
+        liftTime: 0.3,
+        scatterTime: 0.5,
+        restackTime: 0.7,
         staggerAmount: 0.02,
       },
       () => {
@@ -28,11 +38,10 @@ export default function Deck({ onDeal, onDeckChange, groupRef }) {
           ;[arr[i], arr[j]] = [arr[j], arr[i]]
         }
         setDeck(arr)
-        onDeal([])  
+        onDeal([])
       }
     )
   }
-
 
   const handlePointerDown = (e) => {
     e.stopPropagation()
@@ -61,7 +70,7 @@ export default function Deck({ onDeal, onDeckChange, groupRef }) {
     }
     window.addEventListener('reset-deck', handleReset)
     return () => window.removeEventListener('reset-deck', handleReset)
-  },[fullDeck, onDeal, onDeckChange])
+  }, [fullDeck, onDeal, onDeckChange])
 
   return (
     <group
@@ -73,7 +82,11 @@ export default function Deck({ onDeal, onDeckChange, groupRef }) {
         <Card
           key={`${code}-${idx}`}
           code={code}
-          position={[0, -idx * 0.02, idx * 0.001]}
+          position={[
+            0,
+            -idx * (isMobile ? 0.01 : 0.02),
+            idx * (isMobile ? 0.0005 : 0.001)
+          ]}
         />
       ))}
 
