@@ -104,40 +104,46 @@ html, body, #root {
 
 @media (max-width: 768px) {
   html, body, #root {
-    width: 100vw;
-    min-height: 100vh;
     margin: 0;
     padding: 0;
-    overflow-x: auto;
-    overflow-y: auto;  /* ✅ enables scrolling down */
+    width: 100vw;
+    min-height: 100vh;
+    overflow-x: auto;   /* ← horizontal scroll */
+    overflow-y: auto;   /* ← vertical scroll */
   }
 
   .container {
     flex-direction: column;
-    width: max-content;     /* ✅ allows wide canvas */
     min-height: 100vh;
     height: auto;
+    width: max-content;  /* allows wide cards */
     overflow: visible;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-bottom: 100px;  /* room for controls/deck at bottom */
   }
 
   .canvas-wrapper {
-    width: 1400px;          /* ✅ enough width for 7 cards */
-    min-height: 800px;      /* ✅ enough height for deck & cards */
+    width: 1400px;           /* enough width for 7 cards */
+    min-height: 1000px;      /* enough height for cards + deck */
     overflow: visible;
     background: url('https://i.pinimg.com/736x/17/be/c8/17bec8fc24e7a917eb3197ee06eecc48.jpg') center center / cover no-repeat;
+    position: relative;
   }
 
   .canvas-wrapper canvas {
-    width: 100% !important;
-    height: auto !important;   /* ✅ allow canvas to grow vertically */
-    min-height: 800px;
+    width: 1400px !important;
+    height: 1000px !important;
     display: block;
+    position: relative;
   }
 
   .controls {
-    margin-top: 20px;
-    margin-bottom: 40px;
+    position: relative;
+    bottom: 0;
     width: 90%;
+    margin: 20px auto;
     padding: 16px;
     background: rgba(63, 21, 90, 0.9);
     border-radius: 12px;
@@ -145,14 +151,16 @@ html, body, #root {
     display: flex;
     flex-direction: column;
     gap: 12px;
+    z-index: 10;
   }
 
   .controls button {
     width: 100%;
-    padding: 12px;
     font-size: 1rem;
+    padding: 12px;
     background: #7f3fbf;
     color: white;
     border-radius: 8px;
+    font-weight: 600;
   }
 }
