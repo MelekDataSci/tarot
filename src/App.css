@@ -105,35 +105,54 @@ html, body, #root {
 @media (max-width: 768px) {
   html, body, #root {
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
     padding: 0;
     overflow-x: auto;
-    overflow-y: hidden;
+    overflow-y: auto;  /* ✅ enables scrolling down */
   }
 
   .container {
-    flex-direction: row; /* enable horizontal layout */
-    width: max-content;  /* allows container to grow wider */
-    height: 100vh;
-    overflow-x: auto;
+    flex-direction: column;
+    width: max-content;     /* ✅ allows wide canvas */
+    min-height: 100vh;
+    height: auto;
+    overflow: visible;
   }
 
   .canvas-wrapper {
-    width: 1400px; /* wide enough for 7 spaced cards */
-    height: 100vh;
-    flex-shrink: 0;
+    width: 1400px;          /* ✅ enough width for 7 cards */
+    min-height: 800px;      /* ✅ enough height for deck & cards */
     overflow: visible;
     background: url('https://i.pinimg.com/736x/17/be/c8/17bec8fc24e7a917eb3197ee06eecc48.jpg') center center / cover no-repeat;
   }
 
   .canvas-wrapper canvas {
     width: 100% !important;
-    height: 100% !important;
+    height: auto !important;   /* ✅ allow canvas to grow vertically */
+    min-height: 800px;
     display: block;
   }
 
   .controls {
-    display: none; /* optional: hide controls on mobile */
+    margin-top: 20px;
+    margin-bottom: 40px;
+    width: 90%;
+    padding: 16px;
+    background: rgba(63, 21, 90, 0.9);
+    border-radius: 12px;
+    box-shadow: 0 0 10px #9b59b6;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .controls button {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    background: #7f3fbf;
+    color: white;
+    border-radius: 8px;
   }
 }
