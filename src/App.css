@@ -90,3 +90,56 @@ html, body, #root {
   box-shadow: 0 0 20px #7f3fbf;
   overflow: hidden;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .canvas-wrapper {
+    height: 60vh;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .controls {
+    bottom: 20px;
+    padding: 10px 12px;
+    max-width: 90%;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .controls .deck-count {
+    font-size: 1rem;
+    margin-bottom: 8px;
+  }
+
+  .controls button {
+    width: 100%;
+    font-size: 1rem;
+    padding: 10px;
+  }
+
+  .card {
+    padding: 1em;
+  }
+}
+
+
+
+
+
+
