@@ -105,33 +105,30 @@ html, body, #root {
 @media (max-width: 768px) {
   .container {
     flex-direction: column;
-    height: 100vh;
-    overflow-y: auto;
+    height: auto;
+    min-height: 100vh;
+    overflow: hidden;
   }
 
   .canvas-wrapper {
     flex: none;
+    min-height: 400px;
+    max-height: none;
     height: auto;
-    min-height: 70vh; /* More room for cards */
-    max-height: 75vh;
     overflow-y: auto;
-    border-radius: 0;
-    box-shadow: none;
+    padding: 1rem 0;
     background: url('https://i.pinimg.com/736x/17/be/c8/17bec8fc24e7a917eb3197ee06eecc48.jpg') center center / cover no-repeat;
   }
 
   .controls {
     position: relative;
     width: 90%;
-    max-width: 100%;
     padding: 12px;
-    margin: 0 auto;
-    margin-top: 10px;
+    margin: 0 auto 20px;
     background: rgba(63, 21, 90, 0.9);
     border-radius: 12px;
     box-shadow: 0 0 15px #9b59b6;
     overflow-y: auto;
-    max-height: 100%;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -148,7 +145,7 @@ html, body, #root {
   .controls button {
     width: 100%;
     font-size: 1rem;
-    padding: 10px 14px;
+    padding: 10px;
     border-radius: 8px;
     font-weight: 600;
     background: #7f3fbf;
