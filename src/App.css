@@ -105,26 +105,24 @@ html, body, #root {
 @media (max-width: 768px) {
   .container {
     flex-direction: column;
-    height: auto;
+    height: 100vh;
   }
 
   .canvas-wrapper {
-    height: 60vh;
+    flex: 0 0 60vh; /* Set canvas to take 60% height on mobile */
+    min-height: 300px;
     border-radius: 0;
     box-shadow: none;
   }
 
   .controls {
-    bottom: 20px;
-    padding: 10px 12px;
+    position: relative;
+    bottom: auto;
+    left: auto;
+    transform: none;
+    padding: 10px;
     max-width: 90%;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .controls .deck-count {
-    font-size: 1rem;
-    margin-bottom: 8px;
+    margin: 0 auto;
   }
 
   .controls button {
@@ -132,14 +130,4 @@ html, body, #root {
     font-size: 1rem;
     padding: 10px;
   }
-
-  .card {
-    padding: 1em;
-  }
 }
-
-
-
-
-
-
