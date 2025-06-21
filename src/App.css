@@ -110,62 +110,39 @@ html, body, #root {
 
   .container {
     flex-direction: column;
-    height: auto;
     min-height: 100vh;
-    overflow-x: hidden;
-    overflow-y: auto;
+    overflow: visible;
   }
 
   .canvas-wrapper {
     width: 100%;
-    height: auto;
-    min-height: 600px; /* Enough to show all 7 cards */
-    overflow: visible;
+    min-height: 700px; /* Tall enough for 7 cards */
     background: url('https://i.pinimg.com/736x/17/be/c8/17bec8fc24e7a917eb3197ee06eecc48.jpg') center center / cover no-repeat;
-    padding-top: 20px;
-    padding-bottom: 20px;
   }
 
   .canvas-wrapper canvas {
-    position: relative !important;
+    min-height: 700px;
     width: 100% !important;
     height: auto !important;
-    min-height: 500px;
+    display: block;
+    position: relative !important;
   }
 
   .controls {
-    position: relative;
+    margin-top: 20px;
     width: 90%;
-    margin: 20px auto 40px;
+    margin-left: auto;
+    margin-right: auto;
     padding: 16px;
-    background: rgba(63, 21, 90, 0.95);
+    background: rgba(63, 21, 90, 0.9);
     border-radius: 12px;
-    box-shadow: 0 0 15px #9b59b6;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    z-index: 10;
-  }
-
-  .controls .deck-count {
-    text-align: center;
-    font-size: 1rem;
-    color: #e0caff;
-    margin-bottom: 10px;
+    gap: 12px;
   }
 
   .controls button {
     width: 100%;
     padding: 12px;
-    font-size: 1rem;
-    font-weight: 600;
-    background: #7f3fbf;
-    color: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(127, 63, 191, 0.5);
-  }
-
-  .controls button:hover {
-    background: #9b59b6;
   }
 }
