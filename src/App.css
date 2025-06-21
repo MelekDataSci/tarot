@@ -106,36 +106,41 @@ html, body, #root {
   html, body, #root {
     height: auto;
     overflow-x: hidden;
+    overflow-y: auto;
   }
 
   .container {
     flex-direction: column;
     min-height: 100vh;
+    height: auto;
     overflow: visible;
   }
 
   .canvas-wrapper {
     width: 100%;
-    min-height: 700px; /* Tall enough for 7 cards */
+    height: auto;
+    min-height: 750px; /* Enough height for 7 cards */
+    overflow: visible;
     background: url('https://i.pinimg.com/736x/17/be/c8/17bec8fc24e7a917eb3197ee06eecc48.jpg') center center / cover no-repeat;
   }
 
   .canvas-wrapper canvas {
-    min-height: 700px;
     width: 100% !important;
     height: auto !important;
-    display: block;
+    min-height: 700px;
     position: relative !important;
+    display: block;
   }
 
   .controls {
+    position: relative;
     margin-top: 20px;
+    margin-bottom: 40px;
     width: 90%;
-    margin-left: auto;
-    margin-right: auto;
     padding: 16px;
     background: rgba(63, 21, 90, 0.9);
     border-radius: 12px;
+    box-shadow: 0 0 10px #9b59b6;
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -143,6 +148,11 @@ html, body, #root {
 
   .controls button {
     width: 100%;
+    font-size: 1rem;
     padding: 12px;
+    font-weight: 600;
+    background: #7f3fbf;
+    color: white;
+    border-radius: 8px;
   }
 }
