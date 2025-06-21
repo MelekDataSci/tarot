@@ -106,28 +106,57 @@ html, body, #root {
   .container {
     flex-direction: column;
     height: 100vh;
+    overflow-y: auto;
   }
 
   .canvas-wrapper {
-    flex: 0 0 60vh; /* Set canvas to take 60% height on mobile */
-    min-height: 300px;
+    flex: none;
+    height: auto;
+    min-height: 70vh; /* More room for cards */
+    max-height: 75vh;
+    overflow-y: auto;
     border-radius: 0;
     box-shadow: none;
+    background: url('https://i.pinimg.com/736x/17/be/c8/17bec8fc24e7a917eb3197ee06eecc48.jpg') center center / cover no-repeat;
   }
 
   .controls {
     position: relative;
-    bottom: auto;
-    left: auto;
-    transform: none;
-    padding: 10px;
-    max-width: 90%;
+    width: 90%;
+    max-width: 100%;
+    padding: 12px;
     margin: 0 auto;
+    margin-top: 10px;
+    background: rgba(63, 21, 90, 0.9);
+    border-radius: 12px;
+    box-shadow: 0 0 15px #9b59b6;
+    overflow-y: auto;
+    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .controls .deck-count {
+    font-size: 1rem;
+    margin-bottom: 6px;
+    text-align: center;
+    color: #e0caff;
   }
 
   .controls button {
     width: 100%;
     font-size: 1rem;
-    padding: 10px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-weight: 600;
+    background: #7f3fbf;
+    color: white;
+    box-shadow: 0 3px 6px rgba(127, 63, 191, 0.4);
+  }
+
+  .controls button:hover {
+    background: #9b59b6;
   }
 }
