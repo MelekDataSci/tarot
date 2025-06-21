@@ -104,53 +104,36 @@ html, body, #root {
 
 @media (max-width: 768px) {
   html, body, #root {
+    width: 100vw;
+    height: 100vh;
     margin: 0;
     padding: 0;
-    width: 100%;
-    height: 100%;
-    overflow-x: auto; /* ENABLE horizontal scroll */
-    overflow-y: auto;
+    overflow-x: auto;
+    overflow-y: hidden;
   }
 
   .container {
-    flex-direction: column;
-    height: 100%;
-    overflow: visible;
+    flex-direction: row; /* enable horizontal layout */
+    width: max-content;  /* allows container to grow wider */
+    height: 100vh;
+    overflow-x: auto;
   }
 
   .canvas-wrapper {
-    width: 1400px; /* Make canvas WIDE enough for 7 cards */
-    min-height: 750px;
-    overflow-x: scroll;
-    overflow-y: hidden;
-    white-space: nowrap;
+    width: 1400px; /* wide enough for 7 spaced cards */
+    height: 100vh;
+    flex-shrink: 0;
+    overflow: visible;
     background: url('https://i.pinimg.com/736x/17/be/c8/17bec8fc24e7a917eb3197ee06eecc48.jpg') center center / cover no-repeat;
   }
 
   .canvas-wrapper canvas {
-    width: 1400px !important;
+    width: 100% !important;
     height: 100% !important;
-    display: inline-block;
+    display: block;
   }
 
   .controls {
-    width: 90%;
-    margin: 20px auto;
-    padding: 16px;
-    background: rgba(63, 21, 90, 0.9);
-    border-radius: 12px;
-    box-shadow: 0 0 10px #9b59b6;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .controls button {
-    width: 100%;
-    padding: 12px;
-    font-size: 1rem;
-    background: #7f3fbf;
-    color: white;
-    border-radius: 8px;
+    display: none; /* optional: hide controls on mobile */
   }
 }
