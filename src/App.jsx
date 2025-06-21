@@ -3,7 +3,7 @@ import React, { useRef, useState } from 'react'
 import { Canvas } from '@react-three/fiber'
 import Deck from '../components/Deck'
 import Card from '../components/Card'
-import './app.css'
+import './App.css'
 
 export default function App() {
   const [dealtCards, setDealtCards] = useState([])
