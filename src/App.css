@@ -103,35 +103,44 @@ html, body, #root {
 
 
 @media (max-width: 768px) {
+  html, body, #root {
+    height: auto;
+    overflow-x: hidden;
+  }
+
   .container {
     flex-direction: column;
     height: auto;
     min-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
   }
 
   .canvas-wrapper {
-    flex: none;
     width: 100%;
     height: auto;
-    min-height: 550px; /* Enough to show 7 cards */
+    min-height: 600px; /* Enough to show all 7 cards */
+    overflow: visible;
     background: url('https://i.pinimg.com/736x/17/be/c8/17bec8fc24e7a917eb3197ee06eecc48.jpg') center center / cover no-repeat;
-    background-attachment: scroll;
-    overflow: visible; /* Let canvas overflow if needed */
-    padding-bottom: 2rem;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .canvas-wrapper canvas {
+    position: relative !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 500px;
   }
 
   .controls {
     position: relative;
-    bottom: auto;
-    left: auto;
-    transform: none;
     width: 90%;
-    margin: 0 auto;
-    margin-top: 10px;
-    background: rgba(63, 21, 90, 0.9);
+    margin: 20px auto 40px;
+    padding: 16px;
+    background: rgba(63, 21, 90, 0.95);
     border-radius: 12px;
     box-shadow: 0 0 15px #9b59b6;
-    padding: 14px 20px;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -139,21 +148,21 @@ html, body, #root {
   }
 
   .controls .deck-count {
-    font-size: 1rem;
     text-align: center;
+    font-size: 1rem;
     color: #e0caff;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
   }
 
   .controls button {
     width: 100%;
+    padding: 12px;
     font-size: 1rem;
-    padding: 10px;
-    border-radius: 8px;
     font-weight: 600;
     background: #7f3fbf;
     color: white;
-    box-shadow: 0 3px 6px rgba(127, 63, 191, 0.4);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(127, 63, 191, 0.5);
   }
 
   .controls button:hover {
