@@ -105,7 +105,7 @@ html, body, #root {
 @media (max-width: 768px) {
   html, body, #root {
     height: auto;
-    overflow-x: hidden;
+    overflow-x: auto; /* Allow horizontal scroll */
     overflow-y: auto;
   }
 
@@ -117,19 +117,21 @@ html, body, #root {
   }
 
   .canvas-wrapper {
-    width: 100%;
+    width: 100vw;
     height: auto;
     min-height: 750px; /* Enough height for 7 cards */
-    overflow: visible;
+    overflow-x: auto;  /* Enable horizontal scroll */
+    overflow-y: hidden;
+    white-space: nowrap;
     background: url('https://i.pinimg.com/736x/17/be/c8/17bec8fc24e7a917eb3197ee06eecc48.jpg') center center / cover no-repeat;
   }
 
   .canvas-wrapper canvas {
-    width: 100% !important;
+    width: 1200px !important;  /* Wide enough for 7 cards */
     height: auto !important;
     min-height: 700px;
     position: relative !important;
-    display: block;
+    display: inline-block;
   }
 
   .controls {
