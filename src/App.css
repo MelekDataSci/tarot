@@ -111,22 +111,29 @@ html, body, #root {
     overflow-x: auto;
     overflow-y: auto;
     background-color: #2a0a3d;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #eee;
   }
 
   .container {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 100%;
     min-height: 1200px;
+    padding-bottom: 100px;
   }
 
   .canvas-wrapper {
-    width: 1400px; /* Enough width for 7 spaced cards */
+    width: 1400px;
     height: 1000px;
     margin: 0 auto;
-    overflow-x: scroll;
+    overflow-x: auto;
     overflow-y: visible;
     background: url('https://i.pinimg.com/736x/17/be/c8/17bec8fc24e7a917eb3197ee06eecc48.jpg') center center / cover no-repeat;
     position: relative;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(127, 63, 191, 0.6);
   }
 
   .canvas-wrapper canvas {
@@ -137,17 +144,27 @@ html, body, #root {
   }
 
   .controls {
-    margin: 20px auto 40px auto;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
     width: 90%;
-    padding: 16px;
+    max-width: 420px;
+    padding: 14px 18px;
     background: rgba(63, 21, 90, 0.95);
-    border-radius: 12px;
-    box-shadow: 0 0 10px #9b59b6;
+    border-radius: 14px;
+    box-shadow: 0 0 15px #9b59b6;
     display: flex;
     flex-direction: column;
     gap: 12px;
-    position: relative;
     z-index: 1000;
+    text-align: center;
+  }
+
+  .controls .deck-count {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #d8b4fe;
   }
 
   .controls button {
@@ -158,5 +175,10 @@ html, body, #root {
     color: white;
     border-radius: 8px;
     font-weight: 600;
+    box-shadow: 0 4px 10px rgba(127, 63, 191, 0.6);
+  }
+
+  .controls button:active {
+    background: #9b59b6;
   }
 }
