@@ -121,7 +121,7 @@ html, body, #root {
     align-items: center;
     width: 100%;
     min-height: 1200px;
-    padding-bottom: 100px;
+    padding-bottom: 80px;
   }
 
   .canvas-wrapper {
@@ -133,7 +133,7 @@ html, body, #root {
     background: url('https://i.pinimg.com/736x/17/be/c8/17bec8fc24e7a917eb3197ee06eecc48.jpg') center center / cover no-repeat;
     position: relative;
     border-radius: 8px;
-    box-shadow: 0 0 20px rgba(127, 63, 191, 0.6);
+    box-shadow: 0 0 16px rgba(127, 63, 191, 0.5);
   }
 
   .canvas-wrapper canvas {
@@ -145,37 +145,37 @@ html, body, #root {
 
   .controls {
     position: fixed;
-    bottom: 20px;
+    bottom: 12px;
     left: 50%;
     transform: translateX(-50%);
     width: 90%;
-    max-width: 420px;
-    padding: 14px 18px;
-    background: rgba(63, 21, 90, 0.95);
-    border-radius: 14px;
-    box-shadow: 0 0 15px #9b59b6;
+    max-width: 360px;
+    padding: 10px 14px;
+    background: rgba(63, 21, 90, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 0 12px #9b59b6;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 10px;
     z-index: 1000;
     text-align: center;
   }
 
   .controls .deck-count {
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-weight: 600;
-    color: #d8b4fe;
+    color: #e0c8ff;
   }
 
   .controls button {
     width: 100%;
-    padding: 12px;
-    font-size: 1rem;
+    padding: 10px;
+    font-size: 0.95rem;
     background: #7f3fbf;
     color: white;
-    border-radius: 8px;
+    border-radius: 6px;
     font-weight: 600;
-    box-shadow: 0 4px 10px rgba(127, 63, 191, 0.6);
+    box-shadow: 0 3px 8px rgba(127, 63, 191, 0.4);
   }
 
   .controls button:active {
